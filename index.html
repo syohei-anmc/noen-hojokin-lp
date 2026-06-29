@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>補助金、難しそうであきらめていませんか？｜農援の補助金AI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@700;900&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        ink: '#15241a', 'ink-soft': '#41513f', paper: '#FAF9F2', 'paper-warm': '#EEF3E3',
+        brand: '#4a7a1e', leaf: '#8cc63f', 'leaf-d': '#6fae2e', accent: '#DE7C3B', 'line-c': '#E2DDCD',
+      },
+      fontFamily: {
+        serif: ['"Noto Serif JP"','serif'], sans: ['"Noto Sans JP"','sans-serif'], num: ['"Inter"','sans-serif'],
+      },
+    }}
+  }
+</script>
+<style>
+  body{font-family:'Noto Sans JP',sans-serif;color:#15241a;background:#FAF9F2;-webkit-font-smoothing:antialiased}
+  .font-serif{font-family:'Noto Serif JP',serif}
+  .font-num{font-family:'Inter',sans-serif}
+  .tracking-tightest{letter-spacing:-.04em}
+  .leading-tightest{line-height:1.08}
+  .vertical-label{writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.3em}
+  .section-num{font-family:'Inter';font-weight:900;font-size:clamp(80px,15vw,200px);line-height:.8;color:rgba(74,122,30,.07);position:absolute;top:-18px;left:-8px;pointer-events:none}
+  .accent-line{width:60px;height:2px;background:#DE7C3B;margin:0 0 32px}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease-out,transform .8s ease-out}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .bar{width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+  .in .bar{width:var(--w,50%)}
+  .hero-leaf{position:absolute;right:-8%;bottom:-6%;width:62%;max-width:620px;opacity:.10;pointer-events:none}
+  details>summary{list-style:none;cursor:pointer}
+  details>summary::-webkit-details-marker{display:none}
+</style>
+</head>
+<body class="bg-paper text-ink">
+
+<!-- Top bar -->
+<header class="fixed top-0 inset-x-0 z-40 bg-paper/90 backdrop-blur-md border-b border-line-c/60">
+  <div class="max-w-6xl mx-auto px-5 md:px-10 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <img src="logo.png" alt="農援" class="w-9 h-9">
+      <span class="font-serif font-bold text-lg">農援 <span class="font-sans font-normal text-xs text-ink-soft ml-1">補助金AI</span></span>
+    </div>
+    <a href="https://hojokin-bot.no-yen.com/" target="_blank" rel="noopener" class="hidden sm:block text-sm font-bold border border-ink px-5 py-2 rounded-full hover:bg-ink hover:text-paper transition">無料で診断</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-end pt-24 pb-28 md:pb-36 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-paper-warm via-paper to-paper"></div>
+  <img src="logo.png" class="hero-leaf" alt="">
+  <div class="hidden md:block absolute top-1/2 -translate-y-1/2 right-7 vertical-label text-xs font-bold text-ink-soft">農援株式会社 — 農家のための補助金AI</div>
+  <div class="relative z-10 max-w-6xl mx-auto px-5 md:px-10 w-full">
+    <div class="inline-flex items-center gap-3 mb-7">
+      <span class="w-8 h-px bg-accent"></span>
+      <span class="text-xs md:text-sm font-bold tracking-widest text-accent">質問に答えるだけ・無料</span>
+    </div>
+    <h1 class="font-serif font-black leading-tightest tracking-tightest mb-8">
+      <span class="block text-[11vw] md:text-[7.5vw] xl:text-[120px]">補助金、難しそうで</span>
+      <span class="block text-[11vw] md:text-[7.5vw] xl:text-[120px]">あきらめてた人へ。</span>
+    </h1>
+    <p class="text-base md:text-2xl text-ink-soft leading-relaxed mb-10 max-w-2xl">
+      いくつかの質問に「はい／いいえ」で答えるだけ。<br>
+      農家のためのAIが、“あなたに使える補助金”を無料で見つけます。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 mb-14">
+      <a href="https://hojokin-bot.no-yen.com/" target="_blank" rel="noopener" class="bg-ink text-paper text-center font-bold py-5 px-10 hover:bg-brand transition tracking-wide">まずは無料で診断する →</a>
+      <a href="#how" class="text-ink text-center font-bold py-5 px-10 border border-ink hover:bg-ink hover:text-paper transition tracking-wide">使い方を見る</a>
+    </div>
+    <div class="grid grid-cols-3 gap-5 md:gap-14 max-w-lg border-t border-line-c pt-7">
+      <div><div class="font-num text-3xl md:text-5xl font-black leading-none">0<span class="text-sm md:text-base font-bold align-top">円</span></div><div class="text-[10px] md:text-xs text-ink-soft mt-2 tracking-widest font-bold">診断は無料</div></div>
+      <div><div class="font-num text-3xl md:text-5xl font-black leading-none">3<span class="text-sm md:text-base font-bold">分</span></div><div class="text-[10px] md:text-xs text-ink-soft mt-2 tracking-widest font-bold">で完了</div></div>
+      <div><div class="font-serif text-3xl md:text-5xl font-black leading-none">不要</div><div class="text-[10px] md:text-xs text-ink-soft mt-2 tracking-widest font-bold">まず登録なしで</div></div>
+    </div>
+  </div>
+  <div class="absolute bottom-7 left-1/2 -translate-x-1/2 text-xs text-ink-soft tracking-widest animate-bounce">SCROLL ↓</div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="py-28 md:py-44 bg-ink text-paper">
+  <div class="max-w-5xl mx-auto px-5 md:px-10 reveal">
+    <p class="text-leaf font-bold text-sm tracking-widest mb-8">— わたしたちの想い</p>
+    <p class="font-serif text-3xl md:text-6xl font-bold leading-tight tracking-tightest mb-12">
+      補助金が使えないのは、<br>あなたのせいじゃない。<br>
+      <span class="text-leaf">ただ、難しすぎるだけだ。</span>
+    </p>
+    <p class="text-paper/70 text-base md:text-xl leading-relaxed max-w-3xl">
+      種類が多すぎて、お役所の言葉は難しくて、申請書類は大変そうで。<br>
+      ——だから、ほとんどの農家さんが、もらえるはずのお金をあきらめています。<br><br>
+      その「調べる」を、まるごとAIに肩代わりさせる。<br>
+      それが、農援の補助金AIです。
+    </p>
+    <p class="text-paper/50 text-sm md:text-base mt-10 font-serif italic">— 農援 代表 辻</p>
+  </div>
+</section>
+
+<!-- 01 共感 -->
+<section class="relative py-24 md:py-40 overflow-hidden">
+  <span class="section-num">01</span>
+  <div class="max-w-5xl mx-auto px-5 md:px-10 relative reveal">
+    <p class="text-accent font-bold text-sm tracking-widest mb-4">こんなこと、ありませんか</p>
+    <h2 class="font-serif text-3xl md:text-5xl font-black leading-tightest tracking-tightest mb-4">そのモヤモヤ、<br>ぜんぶ分かります。</h2>
+    <div class="accent-line"></div>
+    <div class="grid md:grid-cols-2 gap-4 mt-12">
+      <div class="bg-white border border-line-c p-6 md:p-7"><p class="font-serif text-lg md:text-xl font-bold leading-relaxed">「補助金があるのは知ってる。<br>でも、どれが自分に使えるのか分からない」</p></div>
+      <div class="bg-white border border-line-c p-6 md:p-7"><p class="font-serif text-lg md:text-xl font-bold leading-relaxed">「調べはじめたけど、お役所の言葉が<br>難しくて、途中で閉じてしまった」</p></div>
+      <div class="bg-white border border-line-c p-6 md:p-7"><p class="font-serif text-lg md:text-xl font-bold leading-relaxed">「申請書類が大変そうで、つい後回し。<br>気づけば締め切りが過ぎていた」</p></div>
+      <div class="bg-white border border-line-c p-6 md:p-7"><p class="font-serif text-lg md:text-xl font-bold leading-relaxed">「JAや役場に聞くのも、<br>なんだか気が引ける」</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 解決 -->
+<section class="relative py-24 md:py-40 bg-paper-warm overflow-hidden">
+  <span class="section-num">02</span>
+  <div class="max-w-5xl mx-auto px-5 md:px-10 relative reveal">
+    <p class="text-accent font-bold text-sm tracking-widest mb-4">AIが、肩代わりします</p>
+    <h2 class="font-serif text-3xl md:text-5xl font-black leading-tightest tracking-tightest mb-4">あなたは、<br>答えるだけでいい。</h2>
+    <div class="accent-line"></div>
+    <p class="text-ink-soft text-base md:text-xl leading-relaxed max-w-2xl mb-12">
+      作っているもの、経営の状況、これからやりたいこと。いくつか答えるうちに、AIが<strong class="text-ink">あなたの農業に合った補助金</strong>を見つけ出します。
+    </p>
+    <p class="text-ink-soft text-base md:text-lg leading-relaxed max-w-2xl mb-10 -mt-7">
+      見つけて終わりじゃありません。<strong class="text-ink">次に何をすべきか、申請書類の下書きまで</strong>そのまま手伝います。
+    </p>
+    <!-- 差別化 callout -->
+    <div class="bg-ink text-paper p-7 md:p-10 mb-10">
+      <p class="text-leaf font-bold text-sm tracking-widest mb-4">ふつうの検索・AIとの、決定的な違い</p>
+      <p class="font-serif text-xl md:text-3xl font-bold leading-relaxed mb-7">「補助金のためだけ」に<br>育てた、専用のAIです。</p>
+      <ul class="space-y-4 text-paper/85 text-base md:text-lg leading-relaxed">
+        <li class="flex gap-3"><span class="text-leaf font-bold flex-none">●</span><span><strong class="text-paper">莫大な補助金データを学習。</strong>国や自治体の膨大な制度を、AIが頭に入れています。</span></li>
+        <li class="flex gap-3"><span class="text-leaf font-bold flex-none">●</span><span><strong class="text-paper">毎日、最新に更新。</strong>新しく出た補助金も、各サイトから日々取り込んでいるから、情報が古くなりません。</span></li>
+        <li class="flex gap-3"><span class="text-leaf font-bold flex-none">●</span><span><strong class="text-paper">入力するだけでマッチ。</strong>あなたの状況を答えるだけで、最新の制度の中から“今のあなたに使えるもの”を選び出します。</span></li>
+      </ul>
+      <p class="text-paper/55 text-sm md:text-base mt-6">ネット検索や一般的なAIは、情報が古かったり一般論で終わりがち。ここが、いちばん違うところです。</p>
+    </div>
+    <div class="bg-white border border-line-c p-7 md:p-10 mb-10">
+      <div class="text-xs tracking-widest text-ink-soft font-bold mb-5">たとえば、こんな制度の中から</div>
+      <div class="flex flex-wrap gap-2.5">
+        <span class="border border-line-c px-3.5 py-2 text-sm font-bold">経営所得安定対策（ゲタ・ナラシ）</span>
+        <span class="border border-line-c px-3.5 py-2 text-sm font-bold">農業次世代人材投資資金</span>
+        <span class="border border-line-c px-3.5 py-2 text-sm font-bold">強い農業・担い手づくり総合支援交付金</span>
+        <span class="border border-line-c px-3.5 py-2 text-sm font-bold">スーパーL資金</span>
+        <span class="border border-line-c px-3.5 py-2 text-sm font-bold">スマート農業の実証支援</span>
+        <span class="border border-line-c px-3.5 py-2 text-sm font-bold">有機農業への転換支援</span>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="bg-white border border-line-c p-6"><div class="text-xs font-bold text-ink-soft tracking-widest mb-3">自分で調べると</div><div class="h-3 bg-line-c"></div><div class="font-serif text-2xl font-bold mt-3">何時間も、ときに挫折</div></div>
+      <div class="bg-white border-2 border-brand p-6"><div class="text-xs font-bold text-brand tracking-widest mb-3">農援AIなら</div><div class="h-3 bg-paper-warm"><div class="bar h-3 bg-brand" style="--w:14%"></div></div><div class="font-serif text-2xl font-bold mt-3 text-brand">わずか3分</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 使い方 + 動画 -->
+<section id="how" class="relative py-24 md:py-40 overflow-hidden">
+  <span class="section-num">03</span>
+  <div class="max-w-5xl mx-auto px-5 md:px-10 relative">
+    <div class="reveal">
+      <p class="text-accent font-bold text-sm tracking-widest mb-4">使い方は、3ステップ</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-black leading-tightest tracking-tightest mb-4">むずかしい操作は、<br>ひとつもありません。</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center mt-12">
+      <div class="space-y-8 reveal">
+        <div class="flex gap-5"><div class="font-num text-4xl font-black text-leaf-d leading-none">01</div><div><div class="font-serif text-xl font-bold mb-1">ひらく</div><p class="text-ink-soft">スマホやパソコンで開くだけ。インストールはいりません。</p></div></div>
+        <div class="flex gap-5"><div class="font-num text-4xl font-black text-leaf-d leading-none">02</div><div><div class="font-serif text-xl font-bold mb-1">答える</div><p class="text-ink-soft">AIの質問に、思いつくまま「はい／いいえ」で答えるだけ。</p></div></div>
+        <div class="flex gap-5"><div class="font-num text-4xl font-black text-leaf-d leading-none">03</div><div><div class="font-serif text-xl font-bold mb-1">見つかる</div><p class="text-ink-soft">あなたに合う補助金が表示され、次に何をすべきかまで分かります。</p></div></div>
+      </div>
+      <div class="reveal text-center">
+        <video src="demo.mp4" autoplay muted loop playsinline controls class="w-full max-w-[300px] mx-auto rounded-[26px] border-[6px] border-white shadow-2xl bg-black"></video>
+        <p class="text-sm text-ink-soft mt-4">▲ 実際の画面（約1分）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINE 安心 -->
+<section class="py-16 md:py-20 bg-[#06c755]/10">
+  <div class="max-w-4xl mx-auto px-5 md:px-10 reveal">
+    <div class="bg-white border border-[#06c755]/40 p-7 md:p-9">
+      <p class="font-serif text-xl md:text-2xl font-bold text-[#0f8a3c] mb-3">🟢 気に入ったら、公式LINEでずっと相棒に。</p>
+      <p class="text-ink-soft leading-relaxed">まずは1回、<strong class="text-ink">登録なしでしっかり試せます。</strong>気に入って「続けて使いたい」と思ったときだけ、公式LINE（無料・ワンタップ）でつながればOK。あなたの地域で新しく使える補助金や締切を、そっとお知らせします。<strong class="text-ink">登録してもお金は一切かかりません。</strong>しつこい営業もしませんし、合わなければ解除も一瞬です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 創業ストーリー -->
+<section class="relative py-24 md:py-40 bg-ink text-paper overflow-hidden">
+  <span class="section-num" style="color:rgba(140,198,63,.10)">04</span>
+  <div class="max-w-4xl mx-auto px-5 md:px-10 relative reveal">
+    <p class="text-leaf font-bold text-sm tracking-widest mb-4">なぜ、農援をつくったのか</p>
+    <h2 class="font-serif text-3xl md:text-5xl font-black leading-tightest tracking-tightest mb-10">どん底の僕を、<br>農業が救ってくれた。</h2>
+    <div class="space-y-7 text-paper/80 text-base md:text-lg leading-loose">
+      <p>代表の辻は、もともと東京で美容師をしていました。過労とストレスで倒れ、救急車で運ばれ、心も体もこわして地元・北海道に戻りました。人に会うのもつらかった頃、そっと迎えてくれたのが、祖父母の畑でした。</p>
+      <p>朝、太陽とともに畑へ出て、日が沈むころに家へ帰る。一次産業を担う、子どもにも誇れる仕事——<strong class="text-paper">どん底だった自分を、農業が救ってくれました。</strong></p>
+    </div>
+    <blockquote class="border-l-4 border-leaf pl-6 md:pl-8 py-2 my-12">
+      <p class="font-serif text-xl md:text-3xl text-paper leading-relaxed">「こんなに素晴らしい仕事なのに、<br>なぜ、稼げないんだろう。」</p>
+    </blockquote>
+    <div class="space-y-7 text-paper/80 text-base md:text-lg leading-loose">
+      <p>稼げずに離農する農家さん。継がせたくても、苦労させそうで継がせられない親御さん。その現実が、悔しかった。お金だけなら別の仕事のほうが稼げた。それでも、自分を救ってくれた農業に恩返しがしたくて、農援をつくりました。</p>
+      <p>社名にこめた意味は2つ。<strong class="text-leaf">「農援」＝農家さんを応援する。</strong> そして <strong class="text-leaf">「NO-YEN」＝お金にならないものを、お金にかえる。</strong></p>
+      <p>掲げる理念は「失敗は過程、おもしろいも過程」。まだ3人の小さなチームです。だからこの補助金AIも、あなたの声を聞きながら一緒に育てていきたい。</p>
+      <p class="text-paper/90 text-base md:text-lg leading-relaxed bg-white/5 border border-leaf/30 p-5 md:p-6 rounded-sm">小さなチームですが、農援は <strong class="text-leaf">東証プライム上場・農業総合研究所株式会社の専属代理店</strong> でもあります。きちんとした後ろ盾のある会社として、安心してお使いいただけます。</p>
+    </div>
+    <div class="border-t border-paper/20 mt-12 pt-6 flex items-center justify-between flex-wrap gap-4">
+      <div><div class="text-xs tracking-widest text-paper/50 font-bold mb-1">REPRESENTATIVE</div><div class="font-serif text-xl font-bold">辻 — 農援株式会社 代表</div></div>
+      <a href="https://www.instagram.com/no_yen316" target="_blank" rel="noopener" class="text-leaf font-bold border border-leaf/50 px-5 py-2.5 rounded-full hover:bg-leaf hover:text-ink transition">📷 @no_yen316 で活動を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="relative py-20 md:py-32 bg-paper-warm overflow-hidden">
+  <div class="max-w-3xl mx-auto px-5 md:px-10 reveal">
+    <p class="text-accent font-bold text-sm tracking-widest mb-7 text-center">ふだんの農援は、Instagramで</p>
+    <div class="bg-white border border-line-c p-7 md:p-9 max-w-xl mx-auto shadow-sm">
+      <div class="flex items-center gap-5 mb-5">
+        <img src="logo.png" class="w-20 h-20 rounded-full border border-line-c p-1.5" alt="農援">
+        <div>
+          <div class="font-bold text-lg">no_yen316</div>
+          <div class="text-sm text-ink-soft mb-2">農援株式会社</div>
+          <div class="flex gap-4 text-sm"><span><strong>30</strong> 投稿</span><span><strong>1,256</strong> フォロワー</span></div>
+        </div>
+      </div>
+      <p class="text-sm leading-relaxed text-ink-soft mb-5">農家さんの為になる情報発信！一次産業を豊かにしたい<br>▶ HP、野菜で作ります　▶ 物々交換アプリ Bakrin<br>▶ 農家の孫 ／ 北海道出身 ／ 32歳</p>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="text-xs border border-line-c px-3 py-1 rounded-full">物々交換</span>
+        <span class="text-xs border border-line-c px-3 py-1 rounded-full">農援創業きっかけ</span>
+        <span class="text-xs border border-line-c px-3 py-1 rounded-full">ホームページ作成</span>
+      </div>
+      <a href="https://www.instagram.com/no_yen316" target="_blank" rel="noopener" class="block text-center bg-ink text-paper font-bold py-3.5 hover:bg-brand transition">Instagramで農援を見る →</a>
+    </div>
+    <p class="text-center text-ink-soft text-sm mt-5">どんな人が、どんな想いで活動しているか。のぞいてみてください。</p>
+  </div>
+</section>
+
+<!-- 05 FAQ -->
+<section class="relative py-24 md:py-40 overflow-hidden">
+  <span class="section-num">05</span>
+  <div class="max-w-3xl mx-auto px-5 md:px-10 relative reveal">
+    <p class="text-accent font-bold text-sm tracking-widest mb-4">よくあるご質問</p>
+    <h2 class="font-serif text-3xl md:text-5xl font-black leading-tightest tracking-tightest mb-4">押す前の不安を、<br>消しておきます。</h2>
+    <div class="accent-line"></div>
+    <div class="mt-10 divide-y divide-line-c border-y border-line-c">
+      <details class="py-5"><summary class="font-serif text-lg font-bold flex justify-between"><span>本当に無料ですか？あとからお金がかかりませんか？</span><span class="text-accent">＋</span></summary><p class="text-ink-soft leading-relaxed mt-3">補助金診断は無料です。まずは1回、登録なしでそのままお試しください。続けて使いたいときの公式LINEの友だち追加も無料で、<strong class="text-ink">登録したからといってお金がかかることはありません。</strong><br><br>費用がかかるのは、<strong class="text-ink">行政書士や税理士などの専門家に、あなたが「実際に相談・依頼したい」と選んだときだけ。</strong>それ以外は一切かかりません。勝手に課金されることはないので、安心してお使いください。</p></details>
+      <details class="py-5"><summary class="font-serif text-lg font-bold flex justify-between"><span>なぜ公式LINEの登録が必要なの？</span><span class="text-accent">＋</span></summary><p class="text-ink-soft leading-relaxed mt-3">補助金は毎年変わります。あなたに合った新しい制度や締切を、公式LINEでそっとお届けするためです。しつこい営業はしません。いらなくなればいつでも解除できます。</p></details>
+      <details class="py-5"><summary class="font-serif text-lg font-bold flex justify-between"><span>パソコンが苦手でも使えますか？</span><span class="text-accent">＋</span></summary><p class="text-ink-soft leading-relaxed mt-3">スマホで「はい／いいえ」を選ぶだけ。LINEのメッセージに答える感覚で使えます。</p></details>
+      <details class="py-5"><summary class="font-serif text-lg font-bold flex justify-between"><span>小規模・兼業でも対象になりますか？</span><span class="text-accent">＋</span></summary><p class="text-ink-soft leading-relaxed mt-3">補助金は規模や品目によってさまざま。だからこそ、AIに診断させるのが一番の近道です。</p></details>
+      <details class="py-5"><summary class="font-serif text-lg font-bold flex justify-between"><span>申請までやってくれるの？</span><span class="text-accent">＋</span></summary><p class="text-ink-soft leading-relaxed mt-3">書類の下書きづくりまでサポートします。難しいケースは専門家（行政書士・税理士）もご紹介できます。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="py-28 md:py-44 bg-brand text-paper text-center">
+  <div class="max-w-3xl mx-auto px-5 md:px-10 reveal">
+    <img src="logo.png" alt="農援" class="w-16 h-16 mx-auto mb-8 bg-white rounded-2xl p-2.5">
+    <h2 class="font-serif text-3xl md:text-5xl font-black leading-tightest tracking-tightest mb-6">知らないだけで、<br>もらえるはずだったお金。</h2>
+    <p class="text-paper/85 text-base md:text-xl leading-relaxed mb-10">調べる時間も、難しい言葉も、もう抱え込まなくて大丈夫。<br>まずは3分、AIに聞いてみることから。</p>
+    <a href="https://hojokin-bot.no-yen.com/" target="_blank" rel="noopener" class="inline-block bg-ink text-paper font-bold py-5 px-12 text-lg hover:bg-paper hover:text-ink transition">無料で補助金診断をはじめる →</a>
+    <p class="text-paper/70 text-sm mt-5">1回目は登録なしでお試し・スマホでOK・3分で完了</p>
+  </div>
+</section>
+
+<footer class="bg-ink text-paper/60 text-center py-10 px-5 text-sm">
+  <img src="logo.png" alt="農援" class="w-10 h-10 mx-auto mb-3">
+  農援株式会社 ｜ 農業を、新しいカタチで支援する<br>
+  <a href="https://www.instagram.com/no_yen316" target="_blank" rel="noopener" class="text-leaf">@no_yen316</a>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="fixed bottom-0 inset-x-0 z-50 bg-ink/95 backdrop-blur-md border-t border-white/10 px-4 py-3 sm:hidden">
+  <a href="https://hojokin-bot.no-yen.com/" target="_blank" rel="noopener" class="block bg-leaf-d text-white text-center font-bold py-3.5 rounded-full">無料で補助金診断をはじめる</a>
+</div>
+
+<script>
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{const s=d.querySelector('summary span:last-child');if(s)s.textContent=d.open?'−':'＋';}));
+</script>
+</body>
+</html>
